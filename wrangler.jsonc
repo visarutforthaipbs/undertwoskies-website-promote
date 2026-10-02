@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "undertwoskies-website-promote",
+  "account_id": "37985e3dbd0d5cc809f4740dec81dbfc",
   "compatibility_date": "2026-10-02",
   "assets": {
     "directory": "./dist",

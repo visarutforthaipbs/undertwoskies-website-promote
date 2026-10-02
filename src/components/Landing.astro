@@ -13,9 +13,9 @@ const shots = ['tactical','burn','thermal','hearth'];
     <div class="container hero-content">
       <p class="eyebrow"><span class="status-dot"></span>{c.genre}</p>
       <h1 id="game-title"><span class="sr-only">Under Two Skies</span><img src="/images/logo/under_two_skies_wordmark.png" alt="" width="1396" height="212" fetchpriority="high" /></h1>
-      <p class="thai-title" lang="th">ไร่หมุนเวียนใต้เงาดาวเทียม</p>
+      <p class="hero-subtitle thai-title" lang={lang === 'th' ? 'th' : 'en'}>{c.subtitle}</p>
       <p class="hero-lede">{c.lede}</p>
-      <div class="button-row"><a class="button" href="#gallery"><span class="play-symbol" aria-hidden="true">▶</span>{c.watch}</a><a class="text-link" href="#game">{c.explore} <span aria-hidden="true">↓</span></a></div>
+      <div class="button-row"><a class="button" href={c.betaUrl} rel="noopener">{c.betaCta} <span aria-hidden="true">↓</span></a><a class="text-link" href="#gallery"><span class="play-symbol" aria-hidden="true">▶</span>{c.watch}</a></div>
       <div class="hero-meta">{c.quick.map(item=><span>{item}</span>)}</div>
       <div class="hero-satellite" data-orbit-paused="false">
         <div class="satellite-halo" aria-hidden="true"></div>
@@ -37,18 +37,18 @@ const shots = ['tactical','burn','thermal','hearth'];
       <div class="section-heading split-heading"><div><p class="eyebrow">{c.filmLabel}</p><h2>{c.filmTitle}</h2></div><p class="small-note">{c.filmNote}</p></div>
       <figure class="film">
         <video controls playsinline preload="none" poster="/media/crew.webp" width="1280" height="720" aria-label={c.watch} aria-describedby="film-description"><source src="/media/field-preview.mp4" type="video/mp4" /><a href="/media/field-preview.mp4">{c.filmFallback}</a></video>
-        <figcaption id="film-description"><span class="film-tag">{lang === 'th' ? 'บันทึกในเอนจิน' : 'IN-ENGINE CAPTURE'}</span><span>{c.filmCaption}</span><span>00:12</span></figcaption>
+        <figcaption id="film-description"><span class="film-tag">{lang === 'th' ? 'บันทึกจากเอนจินเกม' : 'IN-ENGINE CAPTURE'}</span><span>{c.filmCaption}</span><span>00:12</span></figcaption>
       </figure>
       <div class="screenshots">{shots.map((shot,i)=><figure><a href={`/media/${shot}.png`} aria-label={`${c.fullImage}: ${c.shots[i+1]}`}><img src={`/media/${shot}.webp`} alt={c.shots[i+1]} width="1280" height="720" loading="lazy" /><span class="image-expand" aria-hidden="true">↗</span></a><figcaption><span>0{i+1}</span>{c.shots[i+1]}</figcaption></figure>)}</div>
     </div>
   </section>
   <section class="section container" id="village">
     <div class="section-heading"><p class="eyebrow">{c.villageLabel}</p><h2>{c.villageTitle}</h2><p class="lede">{c.villageBody}</p></div>
-    <div class="cast">{c.cast.map((person,i)=><article><div class="portrait"><span class="portrait-number">0{i+1}</span><img src={`/images/portrait-${person.id}.png`} alt={person.name} width="256" height="256" loading="lazy" /></div><div class="cast-info"><p class="cast-role">{person.role}</p><h3>{person.name}<small>{person.thai}</small></h3><p>{person.text}</p></div></article>)}</div>
+    <div class="cast">{c.cast.map((person,i)=><article><div class="portrait"><span class="portrait-number">0{i+1}</span><img src={`/images/portrait-${person.id}.png`} alt={person.name} width="256" height="256" loading="lazy" /></div><div class="cast-info"><p class="cast-role">{person.role}</p><h3>{person.name}{person.sub ? <small>{person.sub}</small> : null}</h3><p>{person.text}</p></div></article>)}</div>
     <aside class="culture"><div><p class="eyebrow">{c.cultureLabel}</p><h3>{c.cultureTitle}</h3></div><div><p>{c.cultureBody}</p><p class="small-note">{c.cultureNote}</p></div></aside>
   </section>
   <section class="beta-section section" id="beta">
-    <div class="container"><div class="beta-intro"><div><p class="eyebrow">{c.betaLabel}</p><h2>{c.betaTitle}</h2><p class="lede">{c.betaBody}</p></div><div class="beta-notice"><span class="badge"><i class="status-dot"></i>{c.betaBadge}</span><p>{c.betaMore}</p><div class="button-row beta-cta"><a class="button" href={c.betaUrl} rel="noopener">{c.betaCta} <span aria-hidden="true">↓</span></a></div><p class="beta-cta-note">{c.betaCtaNote}</p></div></div>
+    <div class="container"><div class="beta-intro"><div><p class="eyebrow">{c.betaLabel}</p><h2>{c.betaTitle}</h2><p class="lede">{c.betaBody}</p></div><div class="beta-notice"><span class="badge"><i class="status-dot"></i>{c.betaBadge}</span><p>{c.betaMore} <a href={c.feedbackUrl} rel="noopener">{c.feedbackLink}</a></p><div class="button-row beta-cta"><a class="button" href={c.betaUrl} rel="noopener">{c.betaCta} <span aria-hidden="true">↓</span></a></div><p class="beta-cta-note">{c.betaCtaNote}</p></div></div>
     <ol class="roadmap">{c.road.map((step,i)=><li class:list={[{'current':i===0}]}><span class="road-status">{step.status}</span><h3>{step.name}</h3><p>{step.text}</p></li>)}</ol>
     <dl class="facts">{c.facts.map(([label,value])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
     <div class="faq"><h3>{c.faqTitle}</h3><div>{c.faq.map(([q,a])=><details><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></div>

@@ -8,8 +8,8 @@ const home = lang === 'en' ? '/' : '/th/';
 const isMedia = Astro.url.pathname.includes('/press');
 const media = `${home}press/`;
 const absolute = (path:string) => Astro.site ? new URL(path,Astro.site).href : path;
-const pageTitle = title || 'Under Two Skies — ไร่หมุนเวียนใต้เงาดาวเทียม';
-const schema = {'@context':'https://schema.org','@type':'VideoGame',name:'Under Two Skies',alternateName:'ไร่หมุนเวียนใต้เงาดาวเทียม',description:c.description,inLanguage:'th',genre:['Strategy','Survival'],playMode:'SinglePlayer',image:absolute('/images/logo/under_two_skies_logo.png')};
+const pageTitle = title || `Under Two Skies — ${c.subtitle}`;
+const schema = {'@context':'https://schema.org','@type':'VideoGame',name:'Under Two Skies',alternateName:c.subtitle,description:c.description,inLanguage:lang==='th'?'th':'en',genre:['Strategy','Survival'],playMode:'SinglePlayer',image:absolute('/images/logo/under_two_skies_logo.png')};
 ---
 <!doctype html>
 <html lang={lang}>
@@ -51,7 +51,7 @@ const schema = {'@context':'https://schema.org','@type':'VideoGame',name:'Under 
   <footer class="container site-footer">
     <div><a href={home} class="footer-brand">UNDER TWO SKIES</a><p>{c.footer}</p></div>
     <div class="footer-links"><a href={media}>{c.nav[4]}</a><a href={`${home}#beta`}>{c.nav[3]}</a><a href="#top">{c.top} ↑</a></div>
-    <div class="footer-bottom"><span>© {new Date().getFullYear()} Under Two Skies. {c.rights}</span><span lang="th">ไร่หมุนเวียนใต้เงาดาวเทียม</span></div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} Under Two Skies. {c.rights}</span><span lang={lang === 'th' ? 'th' : 'en'}>{c.subtitle}</span></div>
   </footer>
 </body>
 </html>
