@@ -14,18 +14,18 @@
 @media(min-width:1101px){.mobile-beta{display:none!important}}
 
 /* Rendered from the approved V3 game model; no WebGL or client JS needed. */
-.hero-satellite{position:absolute;right:max(1%,calc((100vw - 1500px)/2));top:50%;width:min(49vw,740px);transform:translateY(-55%);pointer-events:none;z-index:0}
-.hero-satellite img{position:relative;width:100%;height:auto;filter:drop-shadow(0 30px 35px #030c1880);animation:satellite-arrive 1.8s ease-out both}
-.satellite-halo{position:absolute;inset:8%;border-radius:50%;background:radial-gradient(ellipse,#9bc4d21a,transparent 67%)}
+.hero-satellite{--sat-w:min(15vw,225px);--orbit-r:min(11vw,165px);position:absolute;right:max(1%,calc((100vw - 1500px)/2));top:50%;width:min(36vw,540px);aspect-ratio:1;transform:translateY(-55%);pointer-events:none;z-index:0}
+.hero-satellite img{position:absolute;left:0;top:0;max-width:none;width:var(--sat-w);height:auto;margin-left:calc(var(--sat-w)/-2);margin-top:calc(var(--sat-w)*-0.375);filter:drop-shadow(0 30px 35px #030c1880);animation:satellite-arrive 1.8s ease-out both}
+.satellite-halo{position:absolute;inset:24%;border-radius:50%;background:radial-gradient(ellipse,#9bc4d21a,transparent 67%)}
 @keyframes satellite-arrive{from{opacity:0;transform:translate(18px,-12px)}to{opacity:1;transform:translate(0,0)}}
-@media(min-width:761px) and (max-width:1100px){.hero-satellite{width:46vw;right:0;top:40%}.hero h1{width:54%}.hero-lede{max-width:46%}}
-@media(max-width:760px){.hero-satellite{position:relative;top:auto;right:auto;width:min(100%,440px);margin:4px auto 0;transform:none;z-index:0}.hero-content{padding-bottom:100px}.hero-satellite img{animation:none}.hero-satellite .satellite-halo{inset:0}}
+@media(min-width:761px) and (max-width:1100px){.hero-satellite{width:min(42vw,420px);right:0;top:40%}.hero h1{width:54%}.hero-lede{max-width:46%}}
+@media(max-width:760px){.hero-satellite{--sat-w:min(26vw,118px);--orbit-r:min(22vw,98px);position:relative;top:auto;right:auto;width:min(76vw,300px);margin:4px auto 0;transform:none;z-index:0}.hero-content{padding-bottom:100px}.hero-satellite img{animation:none}.hero-satellite .satellite-halo{inset:22%}}
 @media(prefers-reduced-motion:reduce){.hero-satellite img{animation:none}}
 
-.satellite-orbit{animation:satellite-orbit 24s linear infinite;will-change:transform}
-@keyframes satellite-orbit{0%,100%{transform:translate(-18px,-22px) rotate(-5deg)}25%{transform:translate(20px,-6px) rotate(1deg)}50%{transform:translate(18px,24px) rotate(5deg)}75%{transform:translate(-20px,6px) rotate(-1deg)}}
+.satellite-orbit{position:absolute;left:50%;top:50%;width:0;height:0;animation:satellite-orbit 36s linear infinite;will-change:transform}
+@keyframes satellite-orbit{from{transform:rotate(0deg) translateX(var(--orbit-r)) rotate(0deg)}to{transform:rotate(360deg) translateX(var(--orbit-r)) rotate(-360deg)}}
 .orbit-toggle{position:absolute;bottom:4%;right:12%;pointer-events:auto;border:1px solid #bacbd43d;border-radius:20px;background:#0b1721b8;color:#c9d4d5;font:inherit;font-size:.7rem;padding:8px 13px;cursor:pointer;z-index:2}
 .orbit-toggle:hover{background:#20313d}.orbit-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .orbit-resume{display:none}[data-orbit-paused="true"] .orbit-pause{display:none}[data-orbit-paused="true"] .orbit-resume{display:inline}[data-orbit-paused="true"] .satellite-orbit{animation-play-state:paused}
-@media(max-width:760px){.satellite-orbit{animation-name:satellite-orbit-mobile}.orbit-toggle{bottom:0;right:8%}@keyframes satellite-orbit-mobile{0%,100%{transform:translate(-6px,-8px) rotate(-3deg)}25%{transform:translate(8px,-3px) rotate(0deg)}50%{transform:translate(6px,8px) rotate(3deg)}75%{transform:translate(-8px,3px) rotate(0deg)}}}
+@media(max-width:760px){.orbit-toggle{bottom:0;right:8%}}
 @media(prefers-reduced-motion:reduce){.satellite-orbit{animation:none;will-change:auto}.orbit-toggle{display:none}}

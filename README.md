@@ -23,7 +23,7 @@ Routes: `/`, `/th/`, `/press/`, `/th/press/`.
 - `src/layouts/BaseLayout.astro`: navigation, logo, language links, metadata.
 - `src/styles/global.css`: responsive presentation.
 - `public/`: approved logo, portraits, fonts, screenshots, and video.
-- `public/images/hero-satellite.webp`: transparent Godot render of the approved V3 satellite model. It follows a slow CSS orbit with a pause/resume button, a smaller path on mobile, and no motion when reduced motion is requested. No 3D runtime is loaded.
+- `public/images/hero-satellite.webp`: transparent Godot render of the approved V3 satellite model. It circles the central halo in a slow CSS orbit (about one lap every 36 seconds) with a pause/resume button, a smaller path on mobile, and no motion when reduced motion is requested. No 3D runtime is loaded.
 
 The silent 12-second video is a staged in-engine preview, not an uninterrupted playthrough or a performance claim. Playback is opt-in. The site describes a private Thai beta; no public download, signup, store URL, price, or release date has been announced. Add links only when confirmed.
 
