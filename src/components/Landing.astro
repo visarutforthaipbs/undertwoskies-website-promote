@@ -5,6 +5,7 @@ interface Props { lang: Lang }
 const {lang} = Astro.props;
 const c = content[lang];
 const shots = ['tactical','burn','thermal','hearth'];
+const titleHtml = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<span class="title-num">$1</span>');
 ---
 <BaseLayout lang={lang}>
   <section class="hero" aria-labelledby="game-title">
@@ -29,15 +30,15 @@ const shots = ['tactical','burn','thermal','hearth'];
     <div class="container hero-bottom"><span><i class="status-dot"></i>{c.status}</span><span>{c.art}</span></div>
   </section>
   <section class="section container" id="game">
-    <div class="section-heading"><p class="eyebrow">{c.introLabel}</p><h2>{c.introTitle}</h2><p class="lede">{c.intro}</p></div>
+    <div class="section-heading"><p class="eyebrow">{c.introLabel}</p><h2 set:html={titleHtml(c.introTitle)} /><p class="lede">{c.intro}</p></div>
     <div class="steps">{c.steps.map((step,i)=><article><div class="step-top"><span>0{i+1}</span><img src={`/game/icons/${step.icon}.svg`} width="32" height="32" alt="" /></div><h3>{step.name}</h3><p class="step-time">{step.time}</p><p>{step.text}</p></article>)}</div>
   </section>
   <section class="film-section section" id="gallery">
     <div class="container">
       <div class="section-heading split-heading"><div><p class="eyebrow">{c.filmLabel}</p><h2>{c.filmTitle}</h2></div><p class="small-note">{c.filmNote}</p></div>
       <figure class="film">
-        <video controls playsinline preload="none" poster="/media/crew.webp" width="1280" height="720" aria-label={c.watch} aria-describedby="film-description"><source src="/media/field-preview.mp4" type="video/mp4" /><a href="/media/field-preview.mp4">{c.filmFallback}</a></video>
-        <figcaption id="film-description"><span class="film-tag">{lang === 'th' ? 'บันทึกจากเอนจินเกม' : 'IN-ENGINE CAPTURE'}</span><span>{c.filmCaption}</span><span>00:12</span></figcaption>
+        <video controls playsinline preload="none" poster="/media/gameplay-poster.webp" width="1280" height="672" aria-label={c.watch} aria-describedby="film-description"><source src="/media/game-play-sample.mp4" type="video/mp4" /><a href="/media/game-play-sample.mp4">{c.filmFallback}</a></video>
+        <figcaption id="film-description"><span class="film-tag">{lang === 'th' ? 'บันทึกการเล่นจริง' : 'GAMEPLAY CAPTURE'}</span><span>{c.filmCaption}</span><span>01:45</span></figcaption>
       </figure>
       <div class="screenshots">{shots.map((shot,i)=><figure><a href={`/media/${shot}.png`} aria-label={`${c.fullImage}: ${c.shots[i+1]}`}><img src={`/media/${shot}.webp`} alt={c.shots[i+1]} width="1280" height="720" loading="lazy" /><span class="image-expand" aria-hidden="true">↗</span></a><figcaption><span>0{i+1}</span>{c.shots[i+1]}</figcaption></figure>)}</div>
     </div>
