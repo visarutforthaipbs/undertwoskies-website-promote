@@ -39,13 +39,12 @@ This builds, verifies local links and media, and performs a Wrangler dry run wit
 
 Before first deployment, authenticate Wrangler against the intended Cloudflare account and verify it with `npx wrangler whoami`. The MCP login and Wrangler login are separate. Confirm the intended account before publishing; no account ID is hardcoded in this repository.
 
-Once the production origin and account are confirmed:
+## Live website
 
-```sh
-SITE_URL=https://YOUR_CONFIRMED_ORIGIN npm run deploy
-```
+- [English](https://undertwoskies-website-promote.undertwoskies-game.workers.dev/)
+- [ภาษาไทย](https://undertwoskies-website-promote.undertwoskies-game.workers.dev/th/)
 
-Set `SITE_URL` to the real HTTPS origin for canonical and sharing metadata. Do not use the placeholder literally. For Workers Builds, select this repository, root `/`, production branch `main`, build command `npm run verify`, and deploy command `npx wrangler deploy`; set `SITE_URL` in its build environment. Connect automatic deployment only when ready to publish.
+Hosted in **Under Two Skies - Game**. The GitHub repository variable `SITE_URL` holds this production origin; `CLOUDFLARE_ACCOUNT_ID` is stored in GitHub Secrets. Local manual deployment uses the same verified account and origin with `npm run deploy`.
 
 Keep API tokens in Cloudflare/GitHub secret settings, never in source files. No Cloudflare resources are created by cloning, building, or running the dry-run check.
 
