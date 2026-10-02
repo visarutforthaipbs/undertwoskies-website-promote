@@ -48,7 +48,7 @@ const shots = ['tactical','burn','thermal','hearth'];
     <aside class="culture"><div><p class="eyebrow">{c.cultureLabel}</p><h3>{c.cultureTitle}</h3></div><div><p>{c.cultureBody}</p><p class="small-note">{c.cultureNote}</p></div></aside>
   </section>
   <section class="beta-section section" id="beta">
-    <div class="container"><div class="beta-intro"><div><p class="eyebrow">{c.betaLabel}</p><h2>{c.betaTitle}</h2><p class="lede">{c.betaBody}</p></div><div class="beta-notice"><span class="badge"><i class="status-dot"></i>{c.betaBadge}</span><p>{c.betaMore}</p></div></div>
+    <div class="container"><div class="beta-intro"><div><p class="eyebrow">{c.betaLabel}</p><h2>{c.betaTitle}</h2><p class="lede">{c.betaBody}</p></div><div class="beta-notice"><span class="badge"><i class="status-dot"></i>{c.betaBadge}</span><p>{c.betaMore}</p><div class="button-row beta-cta"><a class="button" href={c.betaUrl} rel="noopener">{c.betaCta} <span aria-hidden="true">↓</span></a></div><p class="beta-cta-note">{c.betaCtaNote}</p></div></div>
     <ol class="roadmap">{c.road.map((step,i)=><li class:list={[{'current':i===0}]}><span class="road-status">{step.status}</span><h3>{step.name}</h3><p>{step.text}</p></li>)}</ol>
     <dl class="facts">{c.facts.map(([label,value])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
     <div class="faq"><h3>{c.faqTitle}</h3><div>{c.faq.map(([q,a])=><details><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></div>
