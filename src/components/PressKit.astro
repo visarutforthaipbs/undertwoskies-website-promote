@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { content, type Lang } from '../i18n/content';
+interface Props {lang:Lang}
+const {lang}=Astro.props;
+const c=content[lang];
+const shots=['crew','tactical','burn','thermal','hearth'];
+---
+<BaseLayout lang={lang} title={`${c.nav[4]} — Under Two Skies`} description={c.mediaIntro}>
+  <section class="media-header container"><p class="eyebrow">{c.mediaLabel}</p><h1>{c.mediaTitle}</h1><p class="lede">{c.mediaIntro}</p><div class="button-row"><a class="button" href="/media/field-preview.mp4" download>{c.videoDownload} ↓</a><a class="text-link" href="#facts">{c.factsTitle} ↓</a></div></section>
+  <section class="container media-section"><h2>{c.mediaAssets}</h2><p class="small-note">{c.filmNote}</p><div class="screenshots media-shots">{shots.map((shot,i)=><figure><a href={`/media/${shot}.png`} download><img src={`/media/${shot}.webp`} alt={c.shots[i]} loading="lazy" width="1280" height="720" /><span class="image-expand" aria-hidden="true">↓</span></a><figcaption>{c.shots[i]}</figcaption></figure>)}</div></section>
+  <section class="container media-section"><h2>{c.logoTitle}</h2><p class="small-note">{c.logoNote}</p><div class="logo-grid">{['logo','wordmark','icon'].map((name)=><a href={`/images/logo/under_two_skies_${name}.png`} download><div><img src={`/images/logo/under_two_skies_${name}.png`} alt={`Under Two Skies ${name}`} loading="lazy" /></div><span>{c.download} · {name} ↓</span></a>)}</div></section>
+  <section class="container media-section" id="facts"><h2>{c.factsTitle}</h2><dl class="media-facts">{c.mediaFacts.map(([label,value])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl><p class="small-note">{c.mediaNote}</p><p class="small-note">{c.cultureNote}</p><p>{c.contact}</p></section>
+</BaseLayout>

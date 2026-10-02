@@ -1,0 +1,27 @@
+{
+  "name": "undertwoskies-website-promote",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "verify": "npm run build && node tools/verify-site.mjs",
+    "deploy": "npm run verify && wrangler deploy",
+    "deploy:check": "npm run verify && wrangler deploy --dry-run"
+  },
+  "dependencies": {
+    "astro": "^7.3.5"
+  },
+  "allowScripts": {
+    "esbuild": true
+  },
+  "private": true,
+  "devDependencies": {
+    "wrangler": "4.147.0"
+  }
+}

@@ -1,0 +1,57 @@
+---
+import '../styles/global.css';
+import { content, type Lang } from '../i18n/content';
+interface Props { lang: Lang; title?: string; description?: string; }
+const {lang,title,description} = Astro.props;
+const c = content[lang];
+const home = lang === 'en' ? '/' : '/th/';
+const isMedia = Astro.url.pathname.includes('/press');
+const media = `${home}press/`;
+const absolute = (path:string) => Astro.site ? new URL(path,Astro.site).href : path;
+const pageTitle = title || 'Under Two Skies — ไร่หมุนเวียนใต้เงาดาวเทียม';
+const schema = {'@context':'https://schema.org','@type':'VideoGame',name:'Under Two Skies',alternateName:'ไร่หมุนเวียนใต้เงาดาวเทียม',description:c.description,inLanguage:'th',genre:['Strategy','Survival'],playMode:'SinglePlayer',image:absolute('/images/logo/under_two_skies_logo.png')};
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{pageTitle}</title><meta name="description" content={description || c.description} />
+  <meta name="theme-color" content="#101b21" />
+  <meta property="og:type" content="website" /><meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description || c.description} /><meta property="og:image" content={absolute('/images/hero-blue-hour.jpg')} />
+  <meta property="og:locale" content={lang === 'th' ? 'th_TH' : 'en_US'} /><meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/images/logo/under_two_skies_icon.png" />
+  {Astro.site && <link rel="canonical" href={absolute(isMedia ? media : home)} />}
+  <link rel="alternate" hreflang="en" href={absolute(isMedia ? '/press/' : '/')} />
+  <link rel="alternate" hreflang="th" href={absolute(isMedia ? '/th/press/' : '/th/')} />
+  <link rel="alternate" hreflang="x-default" href={absolute(isMedia ? '/press/' : '/')} />
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">{c.skip}</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href={home} aria-label="Under Two Skies"><img src="/images/logo/header-logo.png" width="1856" height="968" alt="" /></a>
+      <nav aria-label={lang === 'th' ? 'เมนูหลัก' : 'Main navigation'}>
+        {['game','gallery','village'].map((id,i)=><a href={`${home}#${id}`}>{c.nav[i]}</a>)}
+        <a class="mobile-beta" href={`${home}#beta`}>{c.nav[3]}</a>
+        <a href={media} aria-current={isMedia ? 'page' : undefined}>{c.nav[4]}</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label={c.language}>
+          <a href={isMedia ? '/press/' : '/'} lang="en" hreflang="en" aria-current={lang === 'en' ? 'page' : undefined}>EN</a>
+          <span aria-hidden="true">/</span>
+          <a href={isMedia ? '/th/press/' : '/th/'} lang="th" hreflang="th" aria-current={lang === 'th' ? 'page' : undefined}>ไทย</a>
+        </div>
+        <a class="header-cta" href={`${home}#beta`}>{c.nav[3]} <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+  <main id="main"><slot /></main>
+  <footer class="container site-footer">
+    <div><a href={home} class="footer-brand">UNDER TWO SKIES</a><p>{c.footer}</p></div>
+    <div class="footer-links"><a href={media}>{c.nav[4]}</a><a href={`${home}#beta`}>{c.nav[3]}</a><a href="#top">{c.top} ↑</a></div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} Under Two Skies. {c.rights}</span><span lang="th">ไร่หมุนเวียนใต้เงาดาวเทียม</span></div>
+  </footer>
+</body>
+</html>

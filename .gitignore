@@ -1,0 +1,50 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+# Credentials and local tooling
+.env.*
+!.env.example
+.dev.vars*
+.wrangler/
+.vscode/
+.playwright-cli/
+# Local archives and review evidence
+.audit-before/
+.before-distribution-*/
+artifacts/
+/showcase-*.png
+# Internal game/distribution records (kept locally)
+/AUDIT.md
+/DISTRIBUTION_REVIEW.md
+/GAME_ASSETS.json
+/MEDIA_PROVENANCE.json
+/MARKETING_STRATEGY.md
+/STEAM_DISTRIBUTION_KIT.md
+/tools/capture-beta.gd
+/tools/sync-media.py
+
+# Machine-specific review helper and duplicate agent instructions
+/tools/browser-review.cjs
+/CLAUDE.md
