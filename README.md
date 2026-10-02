@@ -35,7 +35,7 @@ Configured for [Cloudflare Workers static assets](https://developers.cloudflare.
 npm run deploy:check
 ```
 
-This builds, verifies local links and media, and performs a Wrangler dry run without deploying. GitHub Actions runs the same check on main and pull requests. It does not deploy automatically.
+This builds, verifies local links and media, and performs a Wrangler dry run without deploying. GitHub Actions runs the same check on main and pull requests. The separate deployment workflow publishes verified pushes to main once account setup is complete and the repository variable `CLOUDFLARE_DEPLOY_ENABLED` is `true`.
 
 Before first deployment, authenticate Wrangler against the intended Cloudflare account and verify it with `npx wrangler whoami`. The MCP login and Wrangler login are separate. Confirm the intended account before publishing; no account ID is hardcoded in this repository.
 
@@ -48,3 +48,7 @@ SITE_URL=https://YOUR_CONFIRMED_ORIGIN npm run deploy
 Set `SITE_URL` to the real HTTPS origin for canonical and sharing metadata. Do not use the placeholder literally. For Workers Builds, select this repository, root `/`, production branch `main`, build command `npm run verify`, and deploy command `npx wrangler deploy`; set `SITE_URL` in its build environment. Connect automatic deployment only when ready to publish.
 
 Keep API tokens in Cloudflare/GitHub secret settings, never in source files. No Cloudflare resources are created by cloning, building, or running the dry-run check.
+
+### Automatic deployment setup
+
+The `Deploy website` workflow is prepared but remains disabled until account authentication and secrets are configured. Required repository secrets: `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN` (scoped to Workers deployment in the intended account). Required repository variables: `SITE_URL` (confirmed HTTPS origin), `CLOUDFLARE_DEPLOY_ENABLED=true`. Each main push rebuilds and verifies before deployment, then checks both live homepages. Pull requests only run validation. Do not enable a second Workers Builds deployment trigger alongside this workflow.
