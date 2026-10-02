@@ -17,6 +17,14 @@ const shots = ['tactical','burn','thermal','hearth'];
       <p class="hero-lede">{c.lede}</p>
       <div class="button-row"><a class="button" href="#gallery"><span class="play-symbol" aria-hidden="true">▶</span>{c.watch}</a><a class="text-link" href="#game">{c.explore} <span aria-hidden="true">↓</span></a></div>
       <div class="hero-meta">{c.quick.map(item=><span>{item}</span>)}</div>
+      <div class="hero-satellite" data-orbit-paused="false">
+        <div class="satellite-halo" aria-hidden="true"></div>
+        <div class="satellite-orbit" aria-hidden="true"><img src="/images/hero-satellite.webp" width="1200" height="900" alt="" /></div>
+        <button class="orbit-toggle" type="button" aria-pressed="false" aria-label={lang === 'th' ? 'หยุดการโคจรของดาวเทียม' : 'Pause satellite orbit'} data-pause-label={lang === 'th' ? 'หยุดการโคจรของดาวเทียม' : 'Pause satellite orbit'} data-resume-label={lang === 'th' ? 'ให้ดาวเทียมโคจรต่อ' : 'Resume satellite orbit'}>
+          <span class="orbit-pause">Ⅱ {lang === 'th' ? 'หยุดการโคจร' : 'Pause orbit'}</span>
+          <span class="orbit-resume">▷ {lang === 'th' ? 'โคจรต่อ' : 'Resume orbit'}</span>
+        </button>
+      </div>
     </div>
     <div class="container hero-bottom"><span><i class="status-dot"></i>{c.status}</span><span>{c.art}</span></div>
   </section>
@@ -47,3 +55,16 @@ const shots = ['tactical','burn','thermal','hearth'];
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.orbit-toggle').forEach((button) => {
+    button.addEventListener('click', () => {
+      const stage = button.closest<HTMLElement>('.hero-satellite');
+      if (!stage) return;
+      const paused = stage.dataset.orbitPaused !== 'true';
+      stage.dataset.orbitPaused = String(paused);
+      button.setAttribute('aria-pressed', String(paused));
+      button.setAttribute('aria-label', (paused ? button.dataset.resumeLabel : button.dataset.pauseLabel) || 'Satellite orbit');
+    });
+  });
+</script>
