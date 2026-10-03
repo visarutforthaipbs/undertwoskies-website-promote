@@ -25,7 +25,7 @@ Routes: `/`, `/th/`, `/press/`, `/th/press/`.
 - `public/`: approved logo, portraits, fonts, screenshots, and video.
 - `public/images/hero-satellite.webp`: transparent Godot render of the approved V3 satellite model. It circles the central halo in a slow CSS orbit (about one lap every 36 seconds) with a pause/resume button, a smaller path on mobile, and no motion when reduced motion is requested. No 3D runtime is loaded.
 
-The silent 12-second video is a staged in-engine preview, not an uninterrupted playthrough or a performance claim. Playback is opt-in. The site describes a private Thai beta; no public download, signup, store URL, price, or release date has been announced. Add links only when confirmed.
+The silent 12-second video is a staged in-engine preview, not an uninterrupted playthrough or a performance claim. Playback is opt-in. The site links to the free public Thai beta download page. Game archives live in the Cloudflare R2 bucket `undertwoskies-beta`, served by the `undertwoskies-download` Worker in the game repository (`server/download/`). Update that release and verify its downloads before publishing a new beta number here. No store price or full release date has been announced.
 
 ## Cloudflare deployment preparation
 
@@ -37,7 +37,7 @@ npm run deploy:check
 
 This builds, verifies local links and media, and performs a Wrangler dry run without deploying. GitHub Actions runs the same check on main and pull requests. The separate deployment workflow publishes verified pushes to main once account setup is complete and the repository variable `CLOUDFLARE_DEPLOY_ENABLED` is `true`.
 
-Before first deployment, authenticate Wrangler against the intended Cloudflare account and verify it with `npx wrangler whoami`. The MCP login and Wrangler login are separate. Confirm the intended account before publishing; no account ID is hardcoded in this repository.
+Before first deployment, authenticate Wrangler against the intended Cloudflare account and verify it with `npx wrangler whoami`. The MCP login and Wrangler login are separate. Confirm the intended account before publishing; the configured deployment account is `37985e3dbd0d5cc809f4740dec81dbfc` (Under Two Skies - Game).
 
 ## Live website
 
