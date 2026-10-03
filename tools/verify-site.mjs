@@ -15,6 +15,11 @@ for (const route of routes) {
   if (/<form\b|playtest_signups|Alpha Slots Open|Steam Deck Tested|ThaiPBS collaboration/.test(html)) fail.push(`${route}: obsolete form or claim`);
   const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
   if(new Set(ids).size!==ids.length) fail.push(`${route}: duplicate IDs`);
+  const opening = html.match(/<video\b[^>]*id="opening-video"[^>]*>[\s\S]*?<\/video>/)?.[0];
+  if (!opening || !opening.includes(`src="/media/the-line-on-the-mountain-${expectedLang}.mp4"`) || !opening.includes(`poster="/media/opening-poster-${expectedLang}.webp"`)) fail.push(`${route}: opening video/poster language does not match`);
+  if (!opening?.includes('preload="none"') || !opening.includes('playsinline') || !opening.includes('controls') || /\bautoplay\b/.test(opening)) fail.push(`${route}: opening playback policy`);
+  if (!opening?.includes(`srclang="${expectedLang}"`) || !opening.includes(`src="/media/the-line-on-the-mountain-${expectedLang}.vtt"`)) fail.push(`${route}: missing matching opening captions`);
+  if ((html.match(/class="opening-transcript"/g)||[]).length!==1) fail.push(`${route}: missing readable narration`);
   for(const m of html.matchAll(/\b(?:src|href|poster)="([^"]+)"/g)) {
     const url=m[1];
     if(url.startsWith('#')) {if(!ids.includes(url.slice(1)))fail.push(`${route}: missing anchor ${url}`);continue;}
@@ -33,5 +38,12 @@ for (const route of routes) {
     if(/<video[^>]*autoplay/.test(html))fail.push(`${route}: unwanted autoplay`);
   }
 }
+for (const lang of ['en','th']) {
+  const file = path.join('dist','media',`the-line-on-the-mountain-${lang}.mp4`);
+  const info = await stat(file);
+  if (info.size > 25 * 1024 * 1024) fail.push(`${file}: exceeds static asset ceiling`);
+  const vtt = await readFile(path.join('dist','media',`the-line-on-the-mountain-${lang}.vtt`),'utf8');
+  if (!vtt.startsWith('WEBVTT\n') || (vtt.match(/ --> /g)||[]).length!==8) fail.push(`${lang}: opening caption coverage`);
+}
 if(fail.length){console.error(fail.join('\n'));process.exit(1);}
-console.log(`PASS: ${routes.length} localized routes, ${checks} local asset/link checks, anchors, headings, honest beta state and opt-in video.`);
+console.log(`PASS: ${routes.length} localized routes, ${checks} local asset/link checks, anchors, headings, honest beta state, opt-in opening videos and eight matching captions per language.`);

@@ -30,6 +30,28 @@
 @media(max-width:760px){.orbit-toggle{bottom:0;right:4%}}
 @media(prefers-reduced-motion:reduce){.satellite-orbit{animation:none;will-change:auto}.orbit-toggle{display:none}}
 
+/* Opening film uses the same gold, slate and restrained borders as the site. */
+.opening-section{border-top:1px solid var(--line);background:linear-gradient(160deg,#182b2c,#101b21 65%)}
+.opening-section .split-heading{grid-template-columns:1.3fr .7fr;gap:70px}
+.opening-section .lede{font-size:1rem;max-width:680px}
+.opening-player{position:relative}
+.opening-film video{aspect-ratio:16/9}
+.opening-play{position:absolute;left:50%;top:70%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;gap:16px;max-width:calc(100% - 32px);min-height:52px;padding:14px 24px;border:1px solid var(--gold);background:var(--gold);color:#18252b;font-weight:500;cursor:pointer;box-shadow:0 6px 30px #0005}
+.opening-play[hidden],.opening-error[hidden]{display:none}
+.opening-play:hover{background:#f4d395}
+.opening-play span{font-size:.85em}
+.opening-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 30px;margin-top:15px}
+.opening-footer .text-link{font-size:.8rem;gap:12px}
+.opening-error{color:var(--gold);margin-top:12px}
+.opening-transcript{border-block:1px solid var(--line);margin-top:22px}
+.opening-transcript summary{list-style:none;min-height:52px;padding:15px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:.9rem;color:#d7e0da;cursor:pointer}
+.opening-transcript summary::-webkit-details-marker{display:none}
+.opening-transcript summary span{color:var(--gold);font-size:1.3rem}
+.opening-transcript[open] summary span{transform:rotate(45deg)}
+.opening-transcript>div{max-width:840px;padding:8px 0 30px}
+.opening-transcript p{font-size:.94rem;line-height:1.9}
+@media(max-width:760px){.opening-section .split-heading{grid-template-columns:1fr;gap:20px}.opening-play{padding:10px 16px;min-height:44px;font-size:.8rem;gap:10px;white-space:nowrap}.opening-footer{gap:0}.opening-transcript p{font-size:.88rem}}
+
 .beta-cta{margin-top:22px}.beta-notice .beta-cta-note{font-size:.76rem;margin-top:10px;color:#5d6a62}
 
 .title-num{font-family:Chakra,Kanit,sans-serif;font-weight:600;color:var(--gold);letter-spacing:0}

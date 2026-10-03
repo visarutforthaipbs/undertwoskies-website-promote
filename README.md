@@ -25,7 +25,31 @@ Routes: `/`, `/th/`, `/press/`, `/th/press/`.
 - `public/`: approved logo, portraits, fonts, screenshots, and video.
 - `public/images/hero-satellite.webp`: transparent Godot render of the approved V3 satellite model. It circles the central halo in a slow CSS orbit (about one lap every 36 seconds) with a pause/resume button, a smaller path on mobile, and no motion when reduced motion is requested. No 3D runtime is loaded.
 
-The silent 12-second video is a staged in-engine preview, not an uninterrupted playthrough or a performance claim. Playback is opt-in. The site links to the free public Thai beta download page. Game archives live in the Cloudflare R2 bucket `undertwoskies-beta`, served by the `undertwoskies-download` Worker in the game repository (`server/download/`). Update that release and verify its downloads before publishing a new beta number here. No store price or full release date has been announced.
+The 1:45 gameplay sample is an in-engine development capture, not a hardware performance claim. Playback is opt-in. The site links to the free public Thai beta download page. Game archives live in the Cloudflare R2 bucket `undertwoskies-beta`, served by the `undertwoskies-download` Worker in the game repository (`server/download/`). Update that release and verify its downloads before publishing a new beta number here. No store price or full release date has been announced.
+
+### Opening film
+
+“The Line on the Mountain” is featured at `#story` on both homepages and media
+pages. The hero links directly to it. Thai pages play Thai narration; English
+pages play English narration. Each has music, ambience, on-screen subtitles,
+optional native WebVTT captions, a readable eight-paragraph transcript and an
+MP4 download. Native controls support pause, seeking, volume and fullscreen;
+the larger Play button is a progressive enhancement. Videos use `preload="none"`,
+never autoplay, and pause one another to avoid overlapping sound.
+
+The approved native renders were copied from the game repository's
+`artifacts/opening_background_20261003/opening_th.mp4` and `opening_en.mp4`,
+with no re-encoding or narration changes. Web filenames are
+`public/media/the-line-on-the-mountain-{th,en}.mp4` (67.33 / 67.67 seconds,
+including the recap; about 7.1 / 7.3 MiB). Posters are WebP-encoded frames at
+19 seconds. The transcript comes from `localization/opening.json`; WebVTT
+timings follow the installed recording lengths and each cue's minimum duration.
+The site contains presentation files only, without game source or pipelines.
+
+This opening comes from the current development build. Its English presentation
+does not change the language availability of the publicly downloadable beta.
+Website verification checks the correct localized video/poster/captions on all
+four routes, eight caption cues per language and the individual asset-size ceiling.
 
 ## Cloudflare deployment preparation
 
