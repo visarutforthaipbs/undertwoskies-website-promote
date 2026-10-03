@@ -51,3 +51,17 @@ Keep API tokens in Cloudflare/GitHub secret settings, never in source files. No 
 ### Automatic deployment setup
 
 The `Deploy website` workflow is enabled for pushes to `main`; account authentication and deployment secrets are configured. Required repository secrets: `CLOUDFLARE_ACCOUNT_ID`, `CLOUDFLARE_API_TOKEN` (scoped to Workers deployment in the intended account). Required repository variables: `SITE_URL` (confirmed HTTPS origin), `CLOUDFLARE_DEPLOY_ENABLED=true`. Each main push rebuilds and verifies before deployment, then checks both live homepages. Pull requests only run validation. Do not enable a second Workers Builds deployment trigger alongside this workflow.
+
+### Player guidance and language consistency
+
+Both homepages and press pages include shared `PlaytestHelp.astro`: game-language
+and platform caveats, mobile guidance, and a copyable Discord feedback template.
+English download buttons lead to the download Worker's `/en/` route; Thai buttons
+lead to `/`. Website translation does not imply an English game build.
+`public/website-ux.js` is also copied to the game repository's
+`server/download/public/website-ux.js`; keep those identical. It only suggests a
+platform, shows mobile advice, and copies a template after a click. It does not
+transmit device information or automatically download anything.
+The verification task rejects stale beta-1 copy and mismatched download-language
+links on all four routes. Minimum hardware requirements remain explicitly
+unconfirmed until measured; Linux/Steam Deck remains untested.

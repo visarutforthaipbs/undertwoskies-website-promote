@@ -33,3 +33,6 @@
 .beta-cta{margin-top:22px}.beta-notice .beta-cta-note{font-size:.76rem;margin-top:10px;color:#5d6a62}
 
 .title-num{font-family:Chakra,Kanit,sans-serif;font-weight:600;color:var(--gold);letter-spacing:0}
+
+/* Player guidance shared by both localized home and press pages. */
+.playtest-help{margin-top:28px;padding:22px;border:1px solid var(--line);background:var(--panel)}.feedback-template{margin-top:16px}.feedback-template summary{cursor:pointer;color:var(--gold);min-height:44px;padding-block:10px}.feedback-template textarea{width:100%;max-width:680px;display:block;background:var(--bg);color:var(--ink);border:1px solid var(--line);padding:14px;margin-block:16px;font:inherit;font-size:.9rem;resize:vertical;line-height:1.6}.feedback-template button{font:inherit;color:var(--gold);background:transparent;cursor:pointer;margin-right:14px}.hero-device:empty{display:none}.hero-device{margin-top:20px;max-width:460px}.feedback-template textarea:focus-visible{outline:3px solid var(--gold);outline-offset:4px}

@@ -1,4 +1,5 @@
 ---
+import PlaytestHelp from './PlaytestHelp.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { content, type Lang } from '../i18n/content';
 interface Props { lang: Lang }
@@ -17,6 +18,7 @@ const titleHtml = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<span class="title
       <p class="hero-subtitle thai-title" lang={lang === 'th' ? 'th' : 'en'}>{c.subtitle}</p>
       <p class="hero-lede">{c.lede}</p>
       <div class="button-row"><a class="button" href={c.betaUrl} rel="noopener">{c.betaCta} <span aria-hidden="true">↓</span></a><a class="text-link" href="#gallery"><span class="play-symbol" aria-hidden="true">▶</span>{c.watch}</a></div>
+      <p class="small-note hero-device" data-device-note data-mobile={lang==='en'?'The game requires a computer; this website works on phones too.':'ตัวเกมต้องเล่นบนคอมพิวเตอร์ ส่วนเว็บไซต์ดูบนมือถือได้'}></p>
       <div class="hero-meta">{c.quick.map(item=><span>{item}</span>)}</div>
       <div class="hero-satellite" data-orbit-paused="false">
         <div class="satellite-halo" aria-hidden="true"></div>
@@ -50,6 +52,7 @@ const titleHtml = (s: string) => s.replace(/\*\*(.+?)\*\*/g, '<span class="title
   </section>
   <section class="beta-section section" id="beta">
     <div class="container"><div class="beta-intro"><div><p class="eyebrow">{c.betaLabel}</p><h2>{c.betaTitle}</h2><p class="lede">{c.betaBody}</p></div><div class="beta-notice"><span class="badge"><i class="status-dot"></i>{c.betaBadge}</span><p>{c.betaMore} <a href={c.feedbackUrl} rel="noopener">{c.feedbackLink}</a></p><div class="button-row beta-cta"><a class="button" href={c.betaUrl} rel="noopener">{c.betaCta} <span aria-hidden="true">↓</span></a></div><p class="beta-cta-note">{c.betaCtaNote}</p></div></div>
+    <PlaytestHelp lang={lang} />
     <ol class="roadmap">{c.road.map((step,i)=><li class:list={[{'current':i===0}]}><span class="road-status">{step.status}</span><h3>{step.name}</h3><p>{step.text}</p></li>)}</ol>
     <dl class="facts">{c.facts.map(([label,value])=><div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
     <div class="faq"><h3>{c.faqTitle}</h3><div>{c.faq.map(([q,a])=><details><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></div>
