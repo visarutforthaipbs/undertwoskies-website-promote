@@ -63,6 +63,23 @@ This builds, verifies local links and media, and performs a Wrangler dry run wit
 
 Before first deployment, authenticate Wrangler against the intended Cloudflare account and verify it with `npx wrangler whoami`. The MCP login and Wrangler login are separate. Confirm the intended account before publishing; the configured deployment account is `37985e3dbd0d5cc809f4740dec81dbfc` (Under Two Skies - Game).
 
+Local deployment uses the named Wrangler profile `undertwoskies-game`, bound to
+this checkout. It is signed in as `visarut298@gmail.com` and restricted to the
+game account, so another project's default login does not select the wrong
+account here. On a new machine, create and activate the profile, then verify it:
+
+```sh
+npm exec wrangler -- auth create undertwoskies-game --scopes account:read user:read workers:write workers_scripts:write
+npm exec wrangler -- auth activate undertwoskies-game
+npm exec wrangler -- whoami
+```
+
+GitHub Actions uses its own API token instead of the local OAuth profile. Its
+replacement token is scoped to Workers Scripts:Edit and Account Settings:Read
+in **Under Two Skies - Game**. If CI reports an invalid access token, refresh
+the repository's encrypted `CLOUDFLARE_API_TOKEN` secret; reauthenticating local
+Wrangler alone does not repair CI.
+
 ## Live website
 
 - [English](https://undertwoskies-website-promote.undertwoskies-game.workers.dev/)
