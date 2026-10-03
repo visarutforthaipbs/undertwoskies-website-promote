@@ -6,7 +6,14 @@ const fail=[];
 for (const route of routes) {
   const html=await readFile(path.join('dist',route),'utf8');
   const expectedLang=route.startsWith('th/') ? 'th' : 'en';
-  if (/Beta 1|beta 1|เบตา 1|เบตาภาษาไทย 1/.test(html)) fail.push(`${route}: stale beta release`);
+  if (/\bbeta [12]\b|เบตา [12]|เบตาภาษาไทย [12]|0\.[12]\.0/i.test(html)) fail.push(`${route}: stale beta release`);
+  if (/Thai only|Thai-language (?:PC )?(?:beta|test)|Thai language build|English (?:text and subtitles are )?planned|ภาษาไทยเท่านั้น|มีแผนเพิ่ม(?:ข้อความและคำบรรยาย)?(?:ภาษา)?อังกฤษ|อยู่ในแผนพัฒนา/i.test(html)) fail.push(`${route}: stale game-language claim`);
+  const feedback = html.match(/<textarea\b[^>]*>[\s\S]*?<\/textarea>/)?.[0];
+  const expectedBuild = expectedLang === 'en' ? 'Build: beta 3 (0.3.0)' : 'บิลด์: เบตา 3 (0.3.0)';
+  const expectedChoice = expectedLang === 'en' ? 'Game language (Thai / English):' : 'ภาษาในเกม (ไทย / อังกฤษ):';
+  if (!feedback?.includes(expectedBuild) || !feedback.includes(expectedChoice)) fail.push(`${route}: missing current build/language feedback fields`);
+  const expectedSpeech = expectedLang === 'en' ? 'Thai / English text, subtitles and recorded speech' : 'ข้อความ คำบรรยาย และเสียงพูดไทย / อังกฤษ';
+  if (!html.includes(expectedSpeech)) fail.push(`${route}: missing bilingual game coverage`);
   if (!html.includes('data-copy-feedback')) fail.push(`${route}: missing feedback help`);
   const downloadURL='https://undertwoskies-download.undertwoskies-game.workers.dev/' + (expectedLang==='en' ? 'en/' : '');
   if (!html.includes(`href="${downloadURL}"`)) fail.push(`${route}: download language does not match`);

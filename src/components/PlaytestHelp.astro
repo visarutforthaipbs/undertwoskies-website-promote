@@ -3,10 +3,11 @@ import { type Lang } from '../i18n/content';
 interface Props {lang:Lang}
 const {lang}=Astro.props;
 const en=lang==='en';
-const template=en ? 'Build: beta 2 (0.2.0)\nComputer / OS:\nWhat I was doing:\nWhat happened:\nWhat I expected:\nScreenshot / playtest_log.csv (if available):' : 'บิลด์: เบตา 2 (0.2.0)\nคอมพิวเตอร์ / ระบบปฏิบัติการ:\nกำลังทำอะไรอยู่:\nสิ่งที่เกิดขึ้น:\nสิ่งที่คาดว่าจะเกิด:\nภาพหน้าจอ / playtest_log.csv (ถ้ามี):';
+const template=en ? 'Build: beta 3 (0.3.0)\nComputer / OS:\nGame language (Thai / English):\nWhat I was doing:\nWhat happened:\nWhat I expected:\nScreenshot / playtest_log.csv (if available):' : 'บิลด์: เบตา 3 (0.3.0)\nคอมพิวเตอร์ / ระบบปฏิบัติการ:\nภาษาในเกม (ไทย / อังกฤษ):\nกำลังทำอะไรอยู่:\nสิ่งที่เกิดขึ้น:\nสิ่งที่คาดว่าจะเกิด:\nภาพหน้าจอ / playtest_log.csv (ถ้ามี):';
+const languageNote=en ? 'Game: Thai / English text, subtitles and recorded speech. Choose in Settings; the default is Thai. Linux / Steam Deck builds are untested.' : 'ตัวเกม: ข้อความ คำบรรยาย และเสียงพูดไทย / อังกฤษ เลือกได้ในตั้งค่า เริ่มต้นเป็นภาษาไทย บิลด์ Linux / Steam Deck ยังไม่ผ่านการทดสอบ';
 ---
 <aside class="playtest-help" aria-label={en?'Playtest help':'ช่วยส่งความคิดเห็น'}>
-<p class="small-note" data-device-note data-mobile={en?'On a phone or tablet? You can explore this website, but the game needs a Windows, macOS or Linux computer.':'เปิดจากมือถือหรือแท็บเล็ต? อ่านและดูภาพบนเว็บได้ แต่ตัวเกมต้องเล่นบนคอมพิวเตอร์ Windows, macOS หรือ Linux'} data-default={en?'Website: English / Thai. Current game: Thai only. Linux / Steam Deck builds are untested.':'เว็บไซต์: ไทย / อังกฤษ · ตัวเกมปัจจุบัน: ภาษาไทยเท่านั้น · บิลด์ Linux / Steam Deck ยังไม่ผ่านการทดสอบ'}>{en?'Website: English / Thai. Current game: Thai only. Linux / Steam Deck builds are untested.':'เว็บไซต์: ไทย / อังกฤษ · ตัวเกมปัจจุบัน: ภาษาไทยเท่านั้น · บิลด์ Linux / Steam Deck ยังไม่ผ่านการทดสอบ'}</p>
+<p class="small-note" data-device-note data-mobile={en?'On a phone or tablet? You can explore this website, but the game needs a Windows, macOS or Linux computer.':'เปิดจากมือถือหรือแท็บเล็ต? อ่านและดูภาพบนเว็บได้ แต่ตัวเกมต้องเล่นบนคอมพิวเตอร์ Windows, macOS หรือ Linux'} data-default={languageNote}>{languageNote}</p>
 <details class="feedback-template"><summary>{en?'Send feedback — a short template':'ส่งความคิดเห็น — แบบฟอร์มสั้น ๆ'}</summary>
 <p class="small-note">{en?'Copy, fill in what you know, and post in Discord #feedback. Attach a screenshot or playtest_log.csv if available.':'คัดลอก เติมข้อมูลที่ทราบ แล้วส่งใน Discord ช่อง #feedback แนบภาพหน้าจอหรือ playtest_log.csv ถ้ามี'}</p>
 <textarea readonly aria-label={en?'Feedback template':'แบบฟอร์มความคิดเห็น'} rows="7">{template}</textarea>

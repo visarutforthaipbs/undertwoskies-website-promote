@@ -25,7 +25,29 @@ Routes: `/`, `/th/`, `/press/`, `/th/press/`.
 - `public/`: approved logo, portraits, fonts, screenshots, and video.
 - `public/images/hero-satellite.webp`: transparent Godot render of the approved V3 satellite model. It circles the central halo in a slow CSS orbit (about one lap every 36 seconds) with a pause/resume button, a smaller path on mobile, and no motion when reduced motion is requested. No 3D runtime is loaded.
 
-The 1:45 gameplay sample is an in-engine development capture, not a hardware performance claim. Playback is opt-in. The site links to the free public Thai beta download page. Game archives live in the Cloudflare R2 bucket `undertwoskies-beta`, served by the `undertwoskies-download` Worker in the game repository (`server/download/`). Update that release and verify its downloads before publishing a new beta number here. No store price or full release date has been announced.
+The 1:45 gameplay sample is an in-engine development capture, not a hardware performance claim. Playback is opt-in. The site links to the free public beta download page. Game archives live in the Cloudflare R2 bucket `undertwoskies-beta`, served by the `undertwoskies-download` Worker in the game repository (`server/download/`). Update that release and verify its downloads before publishing a new beta number here. No store price or full release date has been announced.
+
+### Beta 3 release copy (0.3.0)
+
+Beta 3 was published on 2026-10-04 from game source
+`6f15bd65cd9a96e86379a82168507d302a6bc74c`. It includes selectable Thai/English
+interface, subtitles and recorded speech; a first-New-Game opening with background
+music, Pause/Skip and replay from How to play; clearer menus/focus and campaign/save
+recovery fixes. The game defaults to Thai and remembers the selected language.
+
+Final ZIP sizes are approximately **276 MB Windows / 298 MB macOS / 266 MB Linux**
+(decimal MB). All three complete public downloads match the qualified archives'
+SHA-256 and byte counts; HEAD, Range and conditional requests also pass. The final
+Mac app is Developer ID signed, accepted by Apple notarization submission
+`e225ea22-89e4-44d0-8a9a-157f139494cc`, stapled and accepted by Gatekeeper as
+“Notarized Developer ID”. Windows is unsigned; native Windows/Linux/Steam Deck
+playtesting remains pending. The promotion repo stores no game installer.
+
+AI-assisted localization and voices do not establish final human language,
+acting or cultural approval; those commercial-release reviews remain pending.
+Release metadata and checksums are published on the
+[download service](https://undertwoskies-download.undertwoskies-game.workers.dev/)
+under `/beta3/release-manifest.json` and `/beta3/SHA256SUMS.txt`.
 
 ### Opening film
 
@@ -46,8 +68,8 @@ including the recap; about 7.1 / 7.3 MiB). Posters are WebP-encoded frames at
 timings follow the installed recording lengths and each cue's minimum duration.
 The site contains presentation files only, without game source or pipelines.
 
-This opening comes from the current development build. Its English presentation
-does not change the language availability of the publicly downloadable beta.
+This opening is included in beta 3's first New Game and can be replayed from
+the in-game guide. Both game languages provide narration and subtitles.
 Website verification checks the correct localized video/poster/captions on all
 four routes, eight caption cues per language and the individual asset-size ceiling.
 
@@ -98,11 +120,13 @@ The `Deploy website` workflow is enabled for pushes to `main`; account authentic
 Both homepages and press pages include shared `PlaytestHelp.astro`: game-language
 and platform caveats, mobile guidance, and a copyable Discord feedback template.
 English download buttons lead to the download Worker's `/en/` route; Thai buttons
-lead to `/`. Website translation does not imply an English game build.
+lead to `/`. Beta 3 offers both game languages independently of the website
+language; fresh profiles start in Thai and can switch in Settings.
 `public/website-ux.js` is also copied to the game repository's
 `server/download/public/website-ux.js`; keep those identical. It only suggests a
 platform, shows mobile advice, and copies a template after a click. It does not
 transmit device information or automatically download anything.
-The verification task rejects stale beta-1 copy and mismatched download-language
-links on all four routes. Minimum hardware requirements remain explicitly
+The verification task rejects stale beta-1/beta-2 copy and mismatched download-language
+links on all four routes, requires beta 3 feedback fields and rejects stale
+Thai-only or English-planned game claims. Minimum hardware requirements remain explicitly
 unconfirmed until measured; Linux/Steam Deck remains untested.
