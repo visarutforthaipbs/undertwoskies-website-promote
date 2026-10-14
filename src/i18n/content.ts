@@ -60,7 +60,7 @@ export const content = {
       ['When will it be released, and what will it cost?', 'The iPhone & iPad version is already out on the App Store (free until 20 October 2026, then ฿99 / US$2.99 one-time purchase). The PC beta 3 is free; the PC full release on Steam has no date or price yet.']
     ],
     mediaTitle:'A closer look at Under Two Skies.', mediaLabel:'Development media',
-    mediaIntro:'Current game captures, the project’s visual identity, and a concise factsheet. This is a beta preview, not a release announcement.',
+    mediaIntro:'Current game captures, the project’s visual identity, and a concise factsheet. The iPhone & iPad version is out now; the PC edition remains a beta preview.',
     mediaAssets:'Screenshots & footage', logoTitle:'The game’s visual identity',logoNote:'Production logos from the game. The illustrated landscape is title artwork; it is not a gameplay screenshot.',
     download:'Download PNG', videoDownload:'Download gameplay preview (1:45)',factsTitle:'Project facts',
     mediaFacts:[['Title','Under Two Skies'],['Subtitle','Rotational Farming in the Shadow of the Satellite'],['Genre','Single-player tactical survival'],['Status','Free beta 3 (0.3.0), open now'],['Beta platforms','Windows & macOS; Linux build untested'],['Game languages','Thai / English text, subtitles & recorded speech; selectable in Settings'],['Minimum requirements','GPU/RAM and macOS version still being measured'],['Engine','Godot 4 · Forward+'],['Stores / full release / price','App Store (iPhone/iPad) out now: free until 20 Oct 2026, then ฿99 / US$2.99 one-time. Steam PC release planned, date and price to be confirmed']],
@@ -71,7 +71,7 @@ export const content = {
     subtitle:'ไร่หมุนเวียนใต้เงาดาวเทียม',
     description:'เกมเอาตัวรอดเชิงยุทธศาสตร์บนดอยสูงภาคเหนือ เมื่อผืนดิน เปลวไฟ และชะตาของหมู่บ้านอยู่ในมือคุณ เบตา 3 ดาวน์โหลดฟรีบน PC และวางจำหน่ายบน App Store สำหรับ iPhone และ iPad แล้ว พร้อมข้อความ คำบรรยาย และเสียงพูดภาษาไทยและอังกฤษ',
     nav:['เกี่ยวกับ','ภาพจากเกมส์','ตัวละคร','สถานะเบตา','ข่าวสาร'],
-    skip:'ข้ามไปยังเนื้อหา',language:'เลือกภาษา',status:'เบตา 3 · ฟรีบน PC · iPhone / iPad บน App Store',genre:'แท็กติกเอาชีวิตรอด · ดอยสูงภาคเหนือ',
+    skip:'ข้ามไปยังเนื้อหา',language:'เลือกภาษา',status:'เบตา 3 ฟรีบน PC · iPhone / iPad วางจำหน่ายแล้ว',genre:'แท็กติกเอาชีวิตรอด · ดอยสูงภาคเหนือ',
     lede:'ทุกๆ 4 เดือนของทุกปี หมู่บ้านบนภูเขาในภาคเหนือของประเทศไทยต้องคอยต่อสู้กับดวงตาสุดไฮเทคบนท้องฟ้า เพื่อหวังเพียงว่าจะมีข้าวพอให้อิ่มท้อง',
     watch:'ชมฟุตเทจจากแปลงจริง',explore:'สำรวจระบบเกม',art:'ภาพวาดเปิดตัวเกม',quick:['โหมดผู้เล่นคนเดียว','เล่นบน PC และ iPhone / iPad','ข้อความและเสียงไทย / อังกฤษ'],
     openingWatch:'ชมแอนิเมชันเปิดเรื่อง',
@@ -125,10 +125,10 @@ export const content = {
       ['เกมจะวางจำหน่ายเมื่อไร และราคาเท่าไร?','เวอร์ชัน iPhone และ iPad วางจำหน่ายบน App Store แล้ว (ฟรีถึง 20 ตุลาคม 2569 หลังจากนั้นราคา 99 บาท / US$2.99 ซื้อครั้งเดียว) ส่วนเบตา 3 บน PC ยังดาวน์โหลดฟรี และเกมเวอร์ชันเต็มบน Steam ยังไม่กำหนดวันและราคา']
     ],
     mediaTitle:'เจาะลึก Under Two Skies: สื่อและข้อมูลโครงการ',mediaLabel:'สื่อประชาสัมพันธ์',
-    mediaIntro:'รวมภาพบันทึกจากเกม อัตลักษณ์ของโครงการ และข้อมูลสรุปที่สำคัญ หน้านี้จัดทำขึ้นเพื่อให้ข้อมูลเบื้องต้นเกี่ยวกับตัวเกมช่วงเบตา ยังไม่ใช่การประกาศวันวางจำหน่าย',
+    mediaIntro:'รวมภาพบันทึกจากเกม อัตลักษณ์ของโครงการ และข้อมูลสรุปที่สำคัญ ปัจจุบันเกมวางจำหน่ายบน iPhone และ iPad แล้ว ส่วนฉบับ PC ยังอยู่ในช่วงเบตา',
     mediaAssets:'ภาพสกรีนช็อตและวิดีโอ',logoTitle:'โลโก้และอัตลักษณ์ทางภาพ',logoNote:'ไฟล์โลโก้อย่างเป็นทางการที่ใช้ในเกม ภาพวาดทิวเขาเป็นภาพอาร์ตเวิร์กประกอบชื่อเกม ไม่ใช่ภาพหน้าจอการเล่น',
     download:'ดาวน์โหลดไฟล์ PNG',videoDownload:'ดาวน์โหลดคลิปตัวอย่างการเล่น (1:45 นาที)',factsTitle:'ข้อมูลจำเพาะของโครงการ',
-    mediaFacts:[['ชื่อเกม','Under Two Skies'],['ชื่อรองภาษาไทย','ไร่หมุนเวียนใต้เงาดาวเทียม'],['แนวเกม','แท็กติกเอาชีวิตรอด ผู้เล่นคนเดียว (Single-player tactical survival)'],['สถานะ','เบตา 3 (0.3.0) ดาวน์โหลดฟรี'],['แพลตฟอร์มช่วงเบตา','Windows และ macOS (บิลด์ Linux ยังไม่ผ่านการทดสอบ)'],['ภาษาในเกม','ข้อความ คำบรรยาย และเสียงพูดไทย / อังกฤษ เลือกได้ในตั้งค่า'],['สเปกขั้นต่ำ','GPU/RAM และเวอร์ชัน macOS ยังอยู่ระหว่างการวัดผล'],['เอนจิน','Godot 4 · Forward+'],['ช่องทางจำหน่าย / ราคา','App Store (iPhone/iPad) วางจำหน่ายแล้ว — ฟรีถึง 20 ต.ค. 2569 หลังจากนั้นราคา 99 บาท / US$2.99 ซื้อครั้งเดียว · ส่วน Steam สำหรับ PC วางแผนไว้ ยังไม่กำหนดวันและราคา']],
+    mediaFacts:[['ชื่อเกม','Under Two Skies'],['ชื่อรองภาษาไทย','ไร่หมุนเวียนใต้เงาดาวเทียม'],['แนวเกม','แท็กติกเอาชีวิตรอด ผู้เล่นคนเดียว (Single-player tactical survival)'],['สถานะ','เบตา 3 (0.3.0) ดาวน์โหลดฟรี'],['แพลตฟอร์มช่วงเบตา','Windows และ macOS (บิลด์ Linux ยังไม่ผ่านการทดสอบ)'],['ภาษาในเกม','ข้อความ คำบรรยาย และเสียงพูดไทย / อังกฤษ เลือกได้ในตั้งค่า'],['สเปกขั้นต่ำ','GPU/RAM และเวอร์ชัน macOS ยังอยู่ระหว่างการวัดผล'],['เอนจิน','Godot 4 · Forward+'],['ช่องทางจำหน่าย / เวอร์ชันเต็ม / ราคา','App Store (iPhone/iPad) วางจำหน่ายแล้ว — ฟรีถึง 20 ต.ค. 2569 หลังจากนั้นราคา 99 บาท / US$2.99 ซื้อครั้งเดียว · ส่วน Steam สำหรับ PC วางแผนไว้ ยังไม่กำหนดวันและราคา']],
     mediaNote:'คลิปตัวอย่างการเล่นบันทึกจากตัวเกมจริงบนเอนจิน Godot 4 ภาพและวิดีโอมาจากตัวเกมระหว่างพัฒนา ไม่ใช่การรับรองประสิทธิภาพบนฮาร์ดแวร์ทุกประเภท มีการใช้เครื่องมือ AI สร้างแอสเซ็ต แปลข้อความ และสร้างเสียงพูด การตรวจภาษา วัฒนธรรม การแสดงเสียง และที่มาของแอสเซ็ตโดยมนุษย์ยังเป็นส่วนหนึ่งของแผนก่อนวางจำหน่ายเชิงพาณิชย์',
     contact:'ยังไม่มีการเปิดเผยช่องทางติดต่อสำหรับสื่อมวลชนอย่างเป็นทางการ',footer:'เกมอิสระที่บอกเล่าเรื่องราวของผืนดิน ชุมชน และการดิ้นรนเพื่ออยู่รอด',top:'กลับสู่ด้านบน',rights:'สงวนลิขสิทธิ์ทั้งหมด',
   }
